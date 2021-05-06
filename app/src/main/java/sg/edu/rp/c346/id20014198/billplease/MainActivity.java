@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button split;
     Button reset;
     EditText discount;
-
+    RadioGroup payment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         split= findViewById(R.id.buttonSplit);
         reset = findViewById(R.id.buttonReset);
         discount = findViewById(R.id.editTextDiscount);
+        payment = findViewById(R.id.radioGroupPayment);
 
         split.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -60,12 +62,19 @@ public class MainActivity extends AppCompatActivity {
                    totalBill.setText("Total Bill: $" + String.format("%.2f", newAmt));
                    int numPerson = Integer.parseInt(numPax.getText().toString());
                    if (numPerson != 1) {
-                       eachPays.setText("Each Pays: $" + String.format("%.2f", newAmt / numPerson));
+                       int checkedRadioId = payment.getCheckedRadioButtonId();
+                       if (checkedRadioId == R.id.radioButtonCash) {
+                           eachPays.setText("Each Pays: $" + String.format("%.2f", newAmt / numPerson) + " in cash.");
+                       } else {
+                           eachPays.setText("Each Pays: $" + String.format("%.2f", newAmt / numPerson) + " via Paynow to 912345678.");
+                       }
 
                    } else {
                        eachPays.setText("Each Pays: $" + newAmt);
 
                    }
+               } else {
+                   totalBill.setText("Please input the amount and number of pax!");
                }
            }
         });
