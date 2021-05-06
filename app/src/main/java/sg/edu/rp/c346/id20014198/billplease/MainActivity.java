@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button split;
     Button reset;
     EditText discount;
-    RadioGroup payment;
+    RadioGroup paymentMethod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         split= findViewById(R.id.buttonSplit);
         reset = findViewById(R.id.buttonReset);
         discount = findViewById(R.id.editTextDiscount);
-        payment = findViewById(R.id.radioGroupPayment);
+        paymentMethod = findViewById(R.id.radioGroupPayment);
 
         split.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                    totalBill.setText("Total Bill: $" + String.format("%.2f", newAmt));
                    int numPerson = Integer.parseInt(numPax.getText().toString());
                    if (numPerson != 1) {
-                       int checkedRadioId = payment.getCheckedRadioButtonId();
+                       int checkedRadioId = paymentMethod.getCheckedRadioButtonId();
                        if (checkedRadioId == R.id.radioButtonCash) {
                            eachPays.setText("Each Pays: $" + String.format("%.2f", newAmt / numPerson) + " in cash.");
                        } else {
