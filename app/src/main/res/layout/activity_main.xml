@@ -149,12 +149,14 @@
         <TextView
             android:id="@+id/textViewTotalBill"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/totalbill" />
 
         <TextView
             android:id="@+id/textViewSplitAmount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/splitamount" />
     </LinearLayout>
 
 </LinearLayout>
